@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Al Hamza Apparel — custom garment manufacturing and sourcing for international buyers.">
+  <title>Al Hamza Apparel | Custom Garment Manufacturing</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="#"><span class="brand-mark">AH</span><span><b>AL HAMZA</b><small>APPAREL · MANUFACTURING</small></span></a>
+  <button id="menuBtn" class="menu-btn" aria-label="Open menu">☰</button>
+  <nav id="nav">
+    <a href="#catalogue">Catalogue</a><a href="#how">How it works</a><a href="#about">About</a><a href="#contact">Contact</a>
+    <button class="outline-btn" id="loginOpen">Customer login</button>
+    <button class="solid-btn" id="cartOpen">Cart <span id="cartCount">0</span></button>
+  </nav>
+</header>
+<main>
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">CUSTOM GARMENT MANUFACTURING · KARACHI, PAKISTAN</p>
+    <h1>Your garment idea.<br><em>Made to your requirements.</em></h1>
+    <p>Custom manufacturing and garment sourcing for brands, businesses, institutions and international buyers. Choose your garment, fabric quality and quantity to request a tailored quotation.</p>
+    <div class="hero-actions"><a class="solid-btn" href="#catalogue">Explore catalogue</a><a class="outline-btn" href="#contact">Request a quotation</a></div>
+    <div class="hero-note"><span>●</span> Minimum order: 100 pieces per style/design · Final price confirmed by quotation</div>
+  </div>
+  <div class="hero-art">
+    <div class="art-card art-main"><div class="fabric-fold"></div><span>MADE FOR YOUR BRAND</span></div>
+    <div class="art-card art-small"><b>100+</b><small>pieces minimum</small></div>
+  </div>
+</section>
+<section class="trust-strip"><span>Custom fabric choices</span><span>Bulk order pricing</span><span>International enquiries</span><span>Quotation before payment</span></section>
+<section class="section" id="catalogue">
+  <div class="section-heading"><div><p class="eyebrow">PRODUCT RANGE</p><h2>Explore the catalogue</h2><p class="muted">Displayed prices are quotation-based because fabric, GSM, construction, printing and order quantity change the cost.</p></div>
+    <div class="search-wrap"><input id="search" placeholder="Search garments…" aria-label="Search products"><select id="categoryFilter" aria-label="Filter category"><option value="all">All categories</option><option>Casualwear</option><option>Workwear</option><option>Uniforms</option><option>Custom</option></select></div>
+  </div>
+  <div id="productGrid" class="product-grid"></div>
+</section>
+<section class="section process" id="how"><p class="eyebrow">SIMPLE PROCESS</p><h2>From requirements to production</h2><div class="steps">
+  <article><span>01</span><h3>Choose your product</h3><p>Select a garment and describe the fabric, quality, colours, sizes and branding you need.</p></article>
+  <article><span>02</span><h3>Get your quotation</h3><p>We review specifications and quantity, then confirm pricing, lead time, shipping and payment terms.</p></article>
+  <article><span>03</span><h3>Approve and produce</h3><p>Production begins only after details, sample requirements, terms and payment milestones are agreed.</p></article>
+</div></section>
+<section class="section split" id="about"><div><p class="eyebrow">ABOUT AL HAMZA APPAREL</p><h2>Manufacturing shaped around your specifications.</h2></div><div><p>We welcome enquiries for custom garments, uniforms and business apparel. Buyers can request different fabric compositions, weights, finishes and quality levels. Availability, minimums, sample options and delivery terms are confirmed for each order.</p><p class="muted">No fixed fabric or shipping specification is assumed. Every order is confirmed individually in writing.</p></div></section>
+<section class="section contact-section" id="contact"><div><p class="eyebrow">START A CONVERSATION</p><h2>Tell us what you want to make.</h2><p>Share your product, fabric preference, quantity and delivery country. We will use these details to prepare a quotation.</p><div class="contact-lines"><p><b>Email</b> <a href="mailto:alhamzagarments.official@gmail.com">alhamzagarments.official@gmail.com</a></p><p><b>WhatsApp</b> <a href="https://wa.me/923132956340" target="_blank" rel="noopener">+92 313 2956340</a></p><p><b>Location</b> Karachi, Pakistan</p></div></div>
+<form id="contactForm" class="contact-form"><label>Your name<input name="name" required></label><label>Business email<input type="email" name="email" required></label><label>Company / brand<input name="company"></label><label>Country<input name="country" required></label><label>What do you need?<textarea name="message" rows="4" required placeholder="Product, fabric/quality, quantity, sizes, branding and target delivery date"></textarea></label><button class="solid-btn" type="submit">Prepare email enquiry</button><small>This opens your email app; it does not silently submit or store your details.</small></form></section>
+</main>
+<footer><a class="brand footer-brand" href="#"><span class="brand-mark">AH</span><span><b>AL HAMZA APPAREL</b><small>Custom garment manufacturing</small></span></a><span>© <span id="year"></span> Al Hamza Apparel. All rights reserved.</span><a href="#contact">Contact for quotation</a></footer>
+
+<div class="overlay" id="productModal" aria-hidden="true"><div class="modal"><button class="close" data-close="productModal" aria-label="Close">×</button><div id="productModalContent"></div></div></div>
+<div class="overlay" id="cartModal" aria-hidden="true"><div class="modal"><button class="close" data-close="cartModal" aria-label="Close">×</button><p class="eyebrow">YOUR SELECTION</p><h2>Quotation cart</h2><div id="cartItems"></div><div class="cart-total"><span>Estimated unit price</span><b>Confirmed by quotation</b></div><p class="muted">Minimum 100 pieces per product/style. Discounts are discussed and confirmed based on total order quantity, fabric and specifications.</p><button id="quoteCart" class="solid-btn full">Request quotation for cart</button><button id="checkoutLogin" class="outline-btn full">Customer login / sign up</button></div></div>
+<div class="overlay" id="loginModal" aria-hidden="true"><div class="modal auth-modal"><button class="close" data-close="loginModal" aria-label="Close">×</button><p class="eyebrow">CUSTOMER ACCOUNT</p><h2 id="authTitle">Customer login</h2><p class="muted">Sign in to use your customer account. Admin access is granted separately by the site owner through Firebase.</p><form id="authForm"><label>Email<input type="email" id="authEmail" required autocomplete="email"></label><label>Password<input type="password" id="authPassword" required minlength="6" autocomplete="current-password"></label><button class="solid-btn full" type="submit" id="authSubmit">Sign in</button></form><button id="toggleAuth" class="text-btn">Need an account? Sign up</button><button id="logoutBtn" class="text-btn hidden">Sign out</button><p id="authStatus" role="status" class="status"></p></div></div>
+<div class="overlay" id="adminModal" aria-hidden="true"><div class="modal"><button class="close" data-close="adminModal" aria-label="Close">×</button><p class="eyebrow">OWNER AREA</p><h2>Product administration</h2><p class="muted">Only a Firebase account explicitly listed in the Firestore <code>admins</code> collection can read/write products. Add products using the form below.</p><form id="adminForm" class="admin-form"><label>Product name<input name="name" required></label><label>Category<select name="category"><option>Casualwear</option><option>Workwear</option><option>Uniforms</option><option>Custom</option></select></label><label>Short description<textarea name="description" required></textarea></label><label>Image URL (https)<input name="image" type="url" placeholder="https://…"></label><label>Fabric options<input name="fabrics" placeholder="Cotton, polyester, blends…" required></label><label>Quality options<input name="qualities" placeholder="Standard, premium, custom GSM…" required></label><label>Base unit price in USD (optional)<input name="priceUSD" type="number" min="0" step="0.01" placeholder="Leave blank to quote manually"></label><button class="solid-btn" type="submit">Save product</button></form><p id="adminStatus" role="status" class="status"></p><div id="adminProductList"></div></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+/* Al Hamza Apparel — base styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+:root {
+  --color-primary: #064e3b;
+  --color-text: #16231e;
+  --color-background: #faf8f4;
+  --color-selection: #f7f3e8;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: var(--color-text);
+  background: var(--color-background);
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--color-background);
+  color: var(--color-text);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection { background: var(--color-primary); color: var(--color-selection); }
+
+h1, h2, h3, h4, h5, h6 { font-family: 'Playfair Display', serif; }
+
+*, *::before, *::after { box-sizing: border-box; }
+
+img, video { max-width: 100%; height: auto; }

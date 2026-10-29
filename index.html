@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Al Hamza Apparel manufactures custom garments for clothing brands, wholesalers, businesses and international buyers. Minimum order 100 pieces.">
+  <meta name="theme-color" content="#123c2d">
+  <title>Al Hamza Apparel | Custom Garment Manufacturing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+
+  <style>
+    .product-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 240px;
+      background: #f3f1e9;
+    }
+
+    .product-photo {
+      display: block;
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .product-visual .product-tag {
+      position: absolute;
+      z-index: 2;
+      top: 12px;
+      left: 12px;
+    }
+
+    .product-card[hidden] {
+      display: none !important;
+    }
+  </style>
+
+  <script src="./app.js" defer></script>
+</head>
+
+<body>
+  <div class="topbar">
+    Custom garment manufacturing for international buyers
+    <span>•</span> Minimum order: 100 pieces
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="Al Hamza Apparel home">
+      <span class="brand-mark">AH</span>
+      <span>
+        <strong>AL HAMZA</strong>
+        <small>APPAREL · MANUFACTURING</small>
+      </span>
+    </a>
+
+    <button class="menu-toggle" id="menuToggle"
+      aria-label="Open navigation" aria-expanded="false" type="button">☰</button>
+
+    <nav id="mainNav">
+      <a href="#products">Products</a>
+      <a href="#fabrics">Fabrics &amp; Colours</a>
+      <a href="#custom">Custom Order</a>
+      <a href="#about">About</a>
+      <a class="nav-cta" href="https://wa.me/923132956340"
+        target="_blank" rel="noopener">WhatsApp Us ↗</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">YOUR GARMENT MANUFACTURING PARTNER</p>
+        <h1>Bring your clothing ideas <em>to life.</em></h1>
+        <p class="hero-intro">
+          Custom-made apparel for clothing brands, wholesalers, retailers,
+          teams and businesses. Choose your product, fabric quality, colours
+          and specifications — then request a tailored quotation.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-dark" href="#products">
+            Explore Products <span>↘</span>
+          </a>
+          <a class="button button-light" href="#custom">
+            Request Custom Garment
+          </a>
+        </div>
+
+        <div class="hero-points">
+          <span>✓ Minimum 100 pieces</span>
+          <span>✓ Custom specifications</span>
+          <span>✓ International enquiries</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="Garment manufacturing showcase">
+        <div class="hero-shape shape-one"></div>
+        <div class="hero-shape shape-two"></div>
+        <div class="hero-label">
+          <span class="label-dot"></span> MADE TO YOUR BRIEF
+        </div>
+
+        <div class="garment-illustration">
+          <div class="shirt-sleeve sleeve-left"></div>
+          <div class="shirt-sleeve sleeve-right"></div>
+          <div class="shirt-body">
+            <div class="shirt-neck"></div>
+            <span>YOUR<br>BRAND</span>
+          </div>
+        </div>
+
+        <div class="hero-note">
+          <strong>Designed around you.</strong>
+          <small>Fabric · Fit · Colour · Branding</small>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip">
+      <div><strong>100+</strong><span>Pieces minimum order</span></div>
+      <div><strong>Custom</strong><span>Fabric and colour options</span></div>
+      <div><strong>B2B</strong><span>Brands &amp; bulk buyers</span></div>
+      <div><strong>Worldwide</strong><span>International enquiries welcome</span></div>
+    </section>
+
+    <section class="section products-section" id="products">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PRODUCT RANGE</p>
+          <h2>What can we make for you?</h2>
+        </div>
+        <p>
+          Choose a product to start an enquiry. Prices are quotation-based
+          because fabric, GSM, design, printing, embroidery and order quantity
+          affect the final cost.
+        </p>
+      </div>
+
+      <div class="filters" role="group" aria-label="Filter products">
+        <button class="filter active" data-filter="all" type="button">All products</button>
+        <button class="filter" data-filter="tops" type="button">Tops</button>
+        <button class="filter" data-filter="outerwear" type="button">Outerwear</button>
+        <button class="filter" data-filter="uniforms" type="button">Uniforms</button>
+        <button class="filter" data-filter="bottoms" type="button">Bottoms</button>
+        <button class="filter" data-filter="other" type="button">Other</button>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+
+        <article class="product-card" data-category="tops" data-product="T-Shirts">
+          <div class="product-visual">
+            <img class="product-photo" src="./t-shirts.jpg" alt="Custom T-shirts" loading="lazy">
+            <span class="product-tag">Everyday essential</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>T-Shirts</h3>
+              <p>Regular, oversized, heavyweight, printed or embroidered.</p>
+            </div>
+            <button class="text-link choose-product" data-product="T-Shirts" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="tops" data-product="Polo Shirts">
+          <div class="product-visual">
+            <img class="product-photo" src="./polo-shirts.jpg" alt="Custom polo shirts" loading="lazy">
+            <span class="product-tag">Smart casual</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Polo Shirts</h3>
+              <p>Piqué, cotton blends, custom collars and branding.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Polo Shirts" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="outerwear" data-product="Hoodies">
+          <div class="product-visual">
+            <img class="product-photo" src="./hoodies.jpg" alt="Custom hoodies" loading="lazy">
+            <span class="product-tag">Streetwear</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Hoodies</h3>
+              <p>Pullover, zip-up, fleece-lined and heavyweight styles.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Hoodies" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="outerwear" data-product="Jackets">
+          <div class="product-visual">
+            <img class="product-photo" src="./jackets.jpg" alt="Custom jackets" loading="lazy">
+            <span class="product-tag">Outerwear</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Jackets</h3>
+              <p>Bomber, varsity, workwear and custom jacket styles.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Jackets" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="bottoms" data-product="Joggers &amp; Sweatpants">
+          <div class="product-visual">
+            <img class="product-photo" src="./joggers-sweatpants.jpg" alt="Joggers and sweatpants" loading="lazy">
+            <span class="product-tag">Comfort fit</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Joggers &amp; Sweatpants</h3>
+              <p>Fleece, French terry and lightweight options.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Joggers &amp; Sweatpants" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Workwear &amp; Industrial Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./workwear-industrial-uniforms.jpg" alt="Workwear and industrial uniforms" loading="lazy">
+            <span class="product-tag">Business &amp; industry</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Workwear &amp; Industrial Uniforms</h3>
+              <p>Staff uniforms, work shirts, trousers and coordinated sets.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Workwear &amp; Industrial Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Medical &amp; Healthcare Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./medical-healthcare-uniforms.jpg" alt="Medical and healthcare uniforms" loading="lazy">
+            <span class="product-tag">Healthcare</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Medical &amp; Healthcare Uniforms</h3>
+              <p>Scrubs, tunics, lab coats and clinic uniforms.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Medical &amp; Healthcare Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Hospitality &amp; School Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./hospitality-uniforms.jpg" alt="Hospitality uniforms" loading="lazy">
+            <span class="product-tag">Teams &amp; institutions</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Hospitality &amp; School Uniforms</h3>
+              <p>Restaurant, hotel, café, school and college uniforms.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Hospitality &amp; School Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Chef Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./chef-uniforms.jpg" alt="Chef uniforms" loading="lazy">
+            <span class="product-tag">Food service</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Chef Uniforms</h3>
+              <p>Custom chef coats, kitchen uniforms and workwear.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Chef Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Lab Coats">
+          <div class="product-visual">
+            <img class="product-photo" src="./lab-coats.jpg" alt="Lab coats" loading="lazy">
+            <span class="product-tag">Professional wear</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Lab Coats</h3>
+              <p>Lab coats for clinics, laboratories and institutions.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Lab Coats" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Nurse Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./nurse-uniforms.jpg" alt="Nurse uniforms" loading="lazy">
+            <span class="product-tag">Healthcare teams</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Nurse Uniforms</h3>
+              <p>Custom nurse uniforms and medical workwear.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Nurse Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="School Uniforms">
+          <div class="product-visual">
+            <img class="product-photo" src="./school-uniforms.jpg" alt="School uniforms" loading="lazy">
+            <span class="product-tag">Education</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>School Uniforms</h3>
+              <p>Uniforms for schools, colleges and educational organisations.</p>
+            </div>
+            <button class="text-link choose-product" data-product="School Uniforms" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="tops" data-product="Sports &amp; Corporate Polo Shirts">
+          <div class="product-visual">
+            <img class="product-photo" src="./sports-corporate-polo-shirts.jpg" alt="Sports and corporate polo shirts" loading="lazy">
+            <span class="product-tag">Teams &amp; brands</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Sports &amp; Corporate Polo Shirts</h3>
+              <p>Custom polos for teams, staff and corporate branding.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Sports &amp; Corporate Polo Shirts" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="outerwear" data-product="Fleece Jackets">
+          <div class="product-visual">
+            <img class="product-photo" src="./fleece-jackets.jpg" alt="Fleece jackets" loading="lazy">
+            <span class="product-tag">Warm layers</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Fleece Jackets</h3>
+              <p>Comfortable fleece outerwear with optional branding.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Fleece Jackets" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="uniforms" data-product="Safety Wear">
+          <div class="product-visual">
+            <img class="product-photo" src="./safety-wear.jpg" alt="Safety wear" loading="lazy">
+            <span class="product-tag">Workplace safety</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Safety Wear</h3>
+              <p>Safety garments and workwear for industrial teams.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Safety Wear" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="bottoms" data-product="Tracksuits">
+          <div class="product-visual">
+            <img class="product-photo" src="./tracksuits.jpg" alt="Custom tracksuits" loading="lazy">
+            <span class="product-tag">Activewear</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Tracksuits</h3>
+              <p>Custom tracksuits for sports, teams and casualwear.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Tracksuits" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="other" data-product="Aprons">
+          <div class="product-visual">
+            <img class="product-photo" src="./aprons.jpg" alt="Custom aprons" loading="lazy">
+            <span class="product-tag">Food &amp; service</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Aprons</h3>
+              <p>Custom aprons for restaurants, cafés, kitchens and businesses.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Aprons" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="other" data-product="Caps &amp; Accessories">
+          <div class="product-visual">
+            <img class="product-photo" src="./caps-accessories.jpg" alt="Caps and accessories" loading="lazy">
+            <span class="product-tag">Custom branding</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Caps &amp; Accessories</h3>
+              <p>Custom accessories and branded items for teams and businesses.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Caps &amp; Accessories" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+        <article class="product-card" data-category="other" data-product="Custom Garments">
+          <div class="product-visual">
+            <img class="product-photo" src="./custom-garments.jpg" alt="Custom garment manufacturing" loading="lazy">
+            <span class="product-tag">Your design</span>
+          </div>
+          <div class="product-info">
+            <div>
+              <h3>Custom Garments</h3>
+              <p>Have a reference photo or unique design? Send it to us.</p>
+            </div>
+            <button class="text-link choose-product" data-product="Custom Garments" type="button">Configure ↗</button>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="fabric-section" id="fabrics">
+      <div class="fabric-layout">
+        <div>
+          <p class="eyebrow">FABRIC &amp; FINISH</p>
+          <h2>Choose the quality that fits your market.</h2>
+          <p class="muted">
+            We can discuss suitable fabric options based on your target price,
+            product use and desired feel. Exact availability and specifications
+            are confirmed with your quotation.
+          </p>
+
+          <div class="quality-cards">
+            <div class="quality-card">
+              <span class="quality-number">01</span>
+              <h3>Economy</h3>
+              <p>Budget-conscious fabric options for value-focused orders.</p>
+              <strong>Lower cost level</strong>
+            </div>
+
+            <div class="quality-card premium">
+              <span class="quality-number">02</span>
+              <h3>Premium</h3>
+              <p>Higher-grade fabric options, selected for feel, finish and intended use.</p>
+              <strong>Higher cost level</strong>
+            </div>
+          </div>
+
+          <small class="fine-print">
+            No fixed prices are published because fabric composition, GSM,
+            trims, print/embroidery and quantity change the cost. Ask for an
+            itemised quote in USD or your preferred currency.
+          </small>
+        </div>
+
+        <div class="fabric-panel">
+          <h3>Fabric options to discuss</h3>
+          <ul class="fabric-list">
+            <li><span>Cotton jersey</span><small>T-shirts and casual tops</small></li>
+            <li><span>Poly-cotton blends</span><small>Uniforms and everyday wear</small></li>
+            <li><span>Piqué knit</span><small>Polo shirts</small></li>
+            <li><span>French terry</span><small>Sweatshirts and joggers</small></li>
+            <li><span>Fleece</span><small>Hoodies and warm layers</small></li>
+            <li><span>Twill / workwear fabric</span><small>Workwear and trousers</small></li>
+            <li><span>Scrub / lab coat fabric</span><small>Healthcare uniforms</small></li>
+            <li><span>Custom fabric</span><small>Share your specification</small></li>
+          </ul>
+
+          <h3 class="colour-title">Colour choices</h3>
+          <p class="muted small-copy">
+            Select a colour in the order form or request a specific shade/Pantone reference.
+          </p>
+
+          <div class="colour-swatches" aria-label="Example colour palette">
+            <span title="White" style="background:#f8f7f3"></span>
+            <span title="Black" style="background:#191919"></span>
+            <span title="Navy" style="background:#142b4b"></span>
+            <span title="Royal blue" style="background:#2457c5"></span>
+            <span title="Red" style="background:#c83a43"></span>
+            <span title="Green" style="background:#2d654c"></span>
+            <span title="Grey" style="background:#9a9da3"></span>
+            <span title="Beige" style="background:#d4c1a2"></span>
+            <span title="Brown" style="background:#73513d"></span>
+            <span title="Yellow" style="background:#edc84a"></span>
+            <span title="Orange" style="background:#e98539"></span>
+            <span title="Pink" style="background:#e6a7b7"></span>
+            <span title="Purple" style="background:#7352a0"></span>
+            <span title="Custom colour" class="custom-swatch">+</span>
+          </div>
+
+          <p class="fine-print">
+            Swatches are examples only. Actual shades depend on fabric dyeing and availability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section custom-section" id="custom">
+      <div class="custom-intro">
+        <p class="eyebrow">CUSTOM GARMENT REQUEST</p>
+        <h2>Your design. Your details. Your order.</h2>
+        <p>
+          Tell us what you want to manufacture. Add a reference picture,
+          select fabric quality and colour, and send your enquiry directly to WhatsApp.
+        </p>
+        <div class="custom-benefits">
+          <span>✓ Minimum order is 100 pieces per style</span>
+          <span>✓ Branding, printing and embroidery can be discussed</span>
+          <span>✓ Final price confirmed after specifications are reviewed</span>
+        </div>
+      </div>
+
+      <form id="orderForm" class="order-form">
+        <div class="form-title">
+          <span>01 / ORDER DETAILS</span>
+          <h3>Build your enquiry</h3>
+        </div>
+
+        <div class="form-grid">
+          <label>Product type
+            <select id="productType" required>
+              <option value="">Choose product</option>
+              <option>T-Shirts</option>
+              <option>Polo Shirts</option>
+              <option>Hoodies</option>
+              <option>Jackets</option>
+              <option>Joggers &amp; Sweatpants</option>
+              <option>Workwear &amp; Industrial Uniforms</option>
+              <option>Medical &amp; Healthcare Uniforms</option>
+              <option>Hospitality &amp; School Uniforms</option>
+              <option>Chef Uniforms</option>
+              <option>Lab Coats</option>
+              <option>Nurse Uniforms</option>
+              <option>School Uniforms</option>
+              <option>Sports &amp; Corporate Polo Shirts</option>
+              <option>Fleece Jackets</option>
+              <option>Safety Wear</option>
+              <option>Tracksuits</option>
+              <option>Aprons</option>
+              <option>Caps &amp; Accessories</option>
+              <option>Custom Garments</option>
+              <option>Other</option>
+            </select>
+          </label>
+
+          <label>Quantity (minimum 100)
+            <input id="quantity" type="number" min="100" step="1" value="100" required>
+            <small class="field-help">Orders below 100 pieces cannot be submitted through this form.</small>
+          </label>
+
+          <label>Fabric quality
+            <select id="quality" required>
+              <option value="">Choose quality</option>
+              <option>Economy / budget-focused</option>
+              <option>Standard</option>
+              <option>Premium / higher-grade</option>
+              <option>Need recommendation</option>
+            </select>
+          </label>
+
+          <label>Fabric preference
+            <select id="fabric">
+              <option>Recommend for my product</option>
+              <option>Cotton jersey</option>
+              <option>Poly-cotton blend</option>
+              <option>Piqué knit</option>
+              <option>French terry</option>
+              <option>Fleece</option>
+              <option>Twill / workwear fabric</option>
+              <option>Scrub / lab coat fabric</option>
+              <option>Other / custom fabric</option>
+            </select>
+          </label>
+
+          <label>Colour
+            <select id="colour">
+              <option>Black</option>
+              <option>White</option>
+              <option>Navy</option>
+              <option>Royal blue</option>
+              <option>Red</option>
+              <option>Green</option>
+              <option>Grey</option>
+              <option>Beige</option>
+              <option>Brown</option>
+              <option>Yellow</option>
+              <option>Orange</option>
+              <option>Pink</option>
+              <option>Purple</option>
+              <option>Multiple colours</option>
+              <option>Custom shade / Pantone</option>
+            </select>
+          </label>
+
+          <label>Size range
+            <input id="sizes" type="text" placeholder="e.g. XS–XXL, or share size chart">
+          </label>
+
+          <label>Branding
+            <select id="branding">
+              <option>None / undecided</option>
+              <option>Screen printing</option>
+              <option>Embroidery</option>
+              <option>Heat transfer</option>
+              <option>Woven labels / tags</option>
+              <option>Multiple branding methods</option>
+            </select>
+          </label>
+
+          <label>Target price per piece
+            <input id="targetPrice" type="text" placeholder="Optional — include currency, e.g. USD">
+          </label>
+
+          <label class="full-field">Country / destination
+            <input id="country" type="text" placeholder="Country where the order will be delivered">
+          </label>
+
+          <label class="full-field">Extra requirements
+            <textarea id="details" rows="4" placeholder="Describe fit, GSM, measurements, packaging, delivery expectations or other details."></textarea>
+          </label>
+
+          <div class="full-field upload-wrap">
+            <label for="referenceImage">Reference product picture (optional)</label>
+            <input id="referenceImage" type="file" accept="image/*">
+            <small class="field-help">
+              WhatsApp cannot automatically attach a file from this form.
+              After WhatsApp opens, attach the selected image in the chat manually.
+            </small>
+            <p id="fileName" class="file-name">No image selected</p>
+          </div>
+        </div>
+
+        <div class="form-bottom">
+          <p>
+            <strong>Need a price?</strong><br>
+            We’ll review your specifications and provide a quotation.
+            Prices are not automatic or guaranteed until confirmed.
+          </p>
+          <button class="button button-dark submit-button" type="submit">
+            Send Enquiry on WhatsApp ↗
+          </button>
+        </div>
+
+        <p id="formMessage" class="form-message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="about-section" id="about">
+      <div>
+        <p class="eyebrow">AL HAMZA APPAREL</p>
+        <h2>Manufacturing built around your requirements.</h2>
+      </div>
+      <div>
+        <p>
+          Al Hamza Apparel supports custom garment enquiries for clothing brands,
+          wholesalers, retailers and organisations. Share your product idea and
+          requirements so we can discuss fabric options, colours, branding,
+          quantities and pricing.
+        </p>
+        <a class="button button-light" href="https://wa.me/923132956340"
+          target="_blank" rel="noopener">Talk to our team ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-main">
+      <a class="brand footer-brand" href="#home">
+        <span class="brand-mark">AH</span>
+        <span>
+          <strong>AL HAMZA</strong>
+          <small>APPAREL · MANUFACTURING</small>
+        </span>
+      </a>
+      <p>Custom garments for businesses and international buyers.</p>
+      <div class="footer-contact">
+        <a href="https://wa.me/923132956340" target="_blank" rel="noopener">
+          WhatsApp: +92 313 2956340
+        </a>
+        <a href="mailto:alhamzagarments.official@gmail.com">
+          alhamzagarments.official@gmail.com
+        </a>
+        <span>Karachi, Pakistan</span>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Al Hamza Apparel. All rights reserved.</span>
+      <span>Minimum order quantity: 100 pieces</span>
+    </div>
+  </footer>
+
+  <a class="floating-whatsapp"
+    href="https://wa.me/923132956340?text=Hello%20Al%20Hamza%20Apparel%2C%20I%20would%20like%20a%20garment%20manufacturing%20quotation."
+    target="_blank" rel="noopener"
+    aria-label="Chat with Al Hamza Apparel on WhatsApp">
+    <span>◉</span> WhatsApp
+  </a>
+</body>
+</html>

@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Al Hamza Apparel - Admin Dashboard</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f4f5ef;font-family:Arial,sans-serif;color:#18382c}
+header{background:#123c2d;color:white;padding:20px}
+main{max-width:950px;margin:25px auto;padding:15px}
+.card{background:white;padding:22px;border-radius:12px;margin-bottom:20px}
+h1,h2{margin-top:0}
+input,textarea,select{width:100%;padding:12px;margin:8px 0 15px;border:1px solid #ddd;border-radius:7px;font-size:15px}
+button{padding:12px 18px;border:0;border-radius:7px;background:#174c37;color:white;cursor:pointer;margin:4px}
+button.danger{background:#a52d2d}
+button.secondary{background:#777}
+.product{border:1px solid #ddd;padding:14px;border-radius:9px;margin:12px 0}
+.product img{width:100px;height:90px;object-fit:cover;border-radius:6px}
+.product-row{display:flex;gap:15px;align-items:center}
+#message{overflow-wrap:anywhere}
+.hidden{display:none}
+</style>
+</head>
+<body>
+
+<header>
+<h1>AL HAMZA APPAREL</h1>
+<p>Admin Dashboard</p>
+</header>
+
+<main>
+<section id="loading" class="card">Checking admin access...</section>
+
+<section id="dashboard" class="hidden">
+<div class="card">
+<h2>Welcome, Admin</h2>
+<button onclick="logout()">Logout</button>
+<button onclick="loadProducts()">Refresh Products</button>
+<p id="message"></p>
+</div>
+
+<div class="card">
+<h2 id="formTitle">Add New Product</h2>
+<form id="productForm">
+<input type="hidden" id="productId">
+
+<label>Product Name</label>
+<input id="name" required placeholder="Product name">
+
+<label>Category</label>
+<select id="category" required>
+<option value="">Select category</option>
+<option value="tops">Tops</option>
+<option value="outerwear">Outerwear</option>
+<option value="uniforms">Uniforms</option>
+<option value="bottoms">Bottoms</option>
+<option value="other">Other</option>
+</select>
+
+<label>Description</label>
+<textarea id="description" rows="3" placeholder="Product details"></textarea>
+
+<label>Product Image</label>
+<input id="photo" type="file" accept="image/*">
+
+<label>Or existing image URL</label>
+<input id="imageUrl" type="url" placeholder="https://...">
+
+<label>
+<input id="active" type="checkbox" checked style="width:auto">
+ Show on website
+</label>
+
+<button type="submit" id="saveBtn">Save Product</button>
+<button type="button" class="secondary" onclick="resetForm()">Clear Form</button>
+</form>
+</div>
+
+<div class="card">
+<h2>Manage Products</h2>
+<div id="products">Loading products...</div>
+</div>
+</section>
+</main>
+
+<script>
+const SUPABASE_URL =
+"https://myrakbvclnknzuwnyqqm.supabase.co";
+
+const SUPABASE_KEY =
+"PASTE_YOUR_SUPABASE_PUBLISHABLE_KEY";
+
+const db = window.supabase.createClient(
+SUPABASE_URL,SUPABASE_KEY
+);
+
+const $ = id => document.getElementById(id);
+
+let currentUser = null;
+
+function showMessage(text){
+$("message").textContent = text;
+}
+
+async function checkAdmin(){
+try{
+const {data,error} = await db.auth.getUser();
+if(error) throw error;
+
+if(!data.user){
+location.replace("./admin.html");
+return;
+}
+
+currentUser = data.user;
+
+const {data:admin,error:adminError} = await db
+.from("admin_users")
+.select("user_id")
+.eq("user_id",currentUser.id)
+.maybeSingle();
+
+if(adminError) throw adminError;
+
+if(!admin){
+await db.auth.signOut();
+location.replace("./admin.html");
+return;
+}
+
+$("loading").classList.add("hidden");
+$("dashboard").classList.remove("hidden");
+
+await loadProducts();
+
+}catch(error){
+$("loading").textContent =
+"Access error: "+error.message;
+}
+}
+
+async function logout(){
+await db.auth.signOut();
+location.replace("./admin.html");
+}
+
+async function loadProducts(){
+$("products").textContent="Loading...";
+
+const {data,error} = await db
+.from("products")
+.select("id,name,category,description,image_url,active")
+.order("name");
+
+if(error){
+$("products").textContent=error.message;
+return;
+}
+
+$("products").replaceChildren();
+
+if(!data.length){
+$("products").textContent="No products found.";
+return;
+}
+
+data.forEach(product=>{
+const card=document.createElement("div");
+card.className="product";
+
+const row=document.createElement("div");
+row.className="product-row";
+
+if(product.image_url){
+const img=document.createElement("img");
+img.src=product.image_url;
+img.alt=product.name;
+row.appendChild(img);
+}
+
+const info=document.createElement("div");
+const title=document.createElement("strong");
+title.textContent=product.name;
+
+const category=document.createElement("p");
+category.textContent="Category: "+product.category;
+
+const status=document.createElement("p");
+status.textContent=product.active?"Active":"Hidden";
+
+info.append(title,category,status);
+row.appendChild(info);
+card.appendChild(row);
+
+const edit=document.createElement("button");
+edit.textContent="Edit";
+edit.onclick=()=>editProduct(product);
+
+const remove=document.createElement("button");
+remove.textContent="Delete";
+remove.className="danger";
+remove.onclick=()=>deleteProduct(product.id);
+
+card.append(edit,remove);
+$("products").appendChild(card);
+});
+}
+
+async function uploadImage(file){
+if(!file) return null;
+
+if(!file.type.startsWith("image/")){
+throw new Error("Please select an image file.");
+}
+
+if(file.size>5*1024*1024){
+throw new Error("Image must be smaller than 5 MB.");
+}
+
+const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"-");
+const path=Date.now()+"-"+safeName;
+
+const {error}=await db.storage
+.from("product-images")
+.upload(path,file,{upsert:false});
+
+if(error) throw error;
+
+const {data}=db.storage
+.from("product-images")
+.getPublicUrl(path);
+
+return data.publicUrl;
+}
+
+$("productForm").addEventListener("submit",async e=>{
+e.preventDefault();
+
+const button=$("saveBtn");
+button.disabled=true;
+showMessage("Saving product...");
+
+try{
+const id=$("productId").value;
+const file=$("photo").files[0];
+
+let imageUrl=$("imageUrl").value.trim();
+
+if(file){
+imageUrl=await uploadImage(file);
+}
+
+const product={
+name:$("name").value.trim(),
+category:$("category").value,
+description:$("description").value.trim(),
+image_url:imageUrl,
+active:$("active").checked
+};
+
+if(id){
+const {error}=await db.from("products")
+.update(product).eq("id",id);
+if(error) throw error;
+}else{
+const {error}=await db.from("products")
+.insert(product);
+if(error) throw error;
+}
+
+showMessage("Product saved successfully!");
+resetForm();
+await loadProducts();
+
+}catch(error){
+showMessage("Error: "+error.message);
+}finally{
+button.disabled=false;
+}
+});
+
+function editProduct(p){
+$("productId").value=p.id;
+$("name").value=p.name;
+$("category").value=p.category;
+$("description").value=p.description||"";
+$("imageUrl").value=p.image_url||"";
+$("active").checked=p.active;
+$("photo").value="";
+$("formTitle").textContent="Edit Product";
+$("saveBtn").textContent="Update Product";
+window.scrollTo({top:0,behavior:"smooth"});
+}
+
+async function deleteProduct(id){
+if(!confirm("Are you sure you want to delete this product?"))return;
+
+const {error}=await db.from("products")
+.delete().eq("id",id);
+
+if(error){
+showMessage("Delete error: "+error.message);
+return;
+}
+
+showMessage("Product deleted.");
+await loadProducts();
+}
+
+function resetForm(){
+$("productForm").reset();
+$("productId").value="";
+$("active").checked=true;
+$("formTitle").textContent="Add New Product";
+$("saveBtn").textContent="Save Product";
+}
+
+checkAdmin();
+</script>
+</body>
+</html>
